@@ -9,7 +9,7 @@ class AutoWaterTaskCron implements CronTask {
 
     public function getSchedule() {
 //            return "0 22 */2 * * "; //run every 2 days at 10pm
-        return "* * * * *"; //run every 2 minutes
+        return "*/2 * * * *"; //run every minute
 
     }
 

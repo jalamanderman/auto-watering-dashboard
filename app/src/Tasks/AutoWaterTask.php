@@ -23,7 +23,6 @@
 
             // Run it twice
             $this->doAutoWater();
-            $this->doAutoWater();
 
             echo '<br/>' . ' <br/>' . 'Cron task completed successfully.';
 
@@ -35,9 +34,8 @@
             $submission = FormSubmission::create();
 
             exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind");
-            sleep(1);
+            sleep(3);
             exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind");
-            sleep(2);
 
             $submission->write();
 

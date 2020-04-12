@@ -113,7 +113,7 @@ class PageController extends ContentController {
         $submission->OriginClass = $this->ClassName;
 
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind");
-        sleep(1);
+        sleep(3);
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind");
 
         $submission->write();
