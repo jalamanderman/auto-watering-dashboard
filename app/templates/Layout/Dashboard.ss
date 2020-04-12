@@ -9,8 +9,9 @@
 <div class="c-dashboard">
     <div class="c-dashboard__item">
         <div class="c-dashboard__header">
+            <h1>$Test</h1>
             <h4><span class="dull-text">Last watered:</span> $LastWatered</h4>
-            <h4><span class="dull-text">Auto watering set to:</span> OFF
+            <h4><span class="dull-text">Auto watering set to:</span> $AutoWatering
 <%--                <% if $AutoWatering %>--%>
 <%--                ON--%>
 <%--            <% else %>--%>

@@ -2,6 +2,7 @@
 
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
@@ -62,26 +63,34 @@ class PageController extends ContentController {
 
 
 
-    public function doToggleAutoBool(){
+    public function doToggleAutoBool($data){
 
         $dashboard = Dashboard::get()->First();
-//            $dashboard->AutoWaterting = 0;
-        $dashboard->AutoWaterting = false;
+//        $dashboard->AutoWaterting = 1;
+
         echo $dashboard->AutoWaterting;
+        if (isset($data['AutoWatering'])) {
+            $dashboard->AutoWatering  = 'ON';
+        } else {
+            $dashboard->AutoWatering  = 'OFF';
+        }
+
+        echo $dashboard->AutoWaterting;
+        echo $dashboard->Test;
 
 
-//            die;
-
-//            echo $dashboard->AutoWaterting;
-//            die;
-        $dashboard->Write();
-        $dashboard->doRestoreToStage();
+        $dashboard->write();
 
         $this->redirect($this->Link());
     }
 
     public function ToggleAutoBool() {
-        $fields = FieldList::create();
+        $dashboard = Dashboard::get()->first();
+
+        $fields = FieldList::create(
+//            TextField::create('Test', 'test'),
+            CheckboxField::create('AutoWatering', '')->setValue(false)
+        );
         $actions = FieldList::create(FormAction::create('doToggleAutoBool', 'Toggle'));
         return Form::create($this, 'ToggleAutoBool', $fields, $actions);
     }

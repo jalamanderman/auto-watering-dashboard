@@ -90,8 +90,14 @@ p {
 }
 
 #Form_ToggleAutoBool {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
     fieldset {
-        display: none;
+        //display: none;
+        border-width: 0;
     }
 }
 
