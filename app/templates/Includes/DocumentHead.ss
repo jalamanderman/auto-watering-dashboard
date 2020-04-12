@@ -16,6 +16,8 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="{$absoluteBaseURL}{$URLSegment}" />
 	<meta property="og:title" content="$Title" />
+	<meta name="theme-color" content="#121212">
+
 
 	<% if MetaDescription %>
 		<meta property="og:description" content="$MetaDescription" />
