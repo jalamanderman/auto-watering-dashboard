@@ -196,8 +196,10 @@ class PageController extends ContentController {
         Requirements::css('https://fonts.googleapis.com/css?family=Roboto:400,600,700,800');
 		
 		if (Director::isLive()){
-			Requirements::javascript('app/production/index.min.js');
-			Requirements::css('app/production/index.min.css');
+//			Requirements::javascript('app/production/index.min.js');
+//			Requirements::css('app/production/index.min.css');
+            Requirements::css('app/production/index.css');
+            Requirements::javascript('app/production/index.js');
 		} else {
 			Requirements::css('app/production/index.css');
 			Requirements::javascript('app/production/index.js');
