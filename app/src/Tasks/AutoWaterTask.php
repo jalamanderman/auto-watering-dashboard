@@ -1,9 +1,6 @@
 <?php
 
-namespace {
 
-
-    use Skeletor\DataObjects\FormSubmission;
     use SilverStripe\Core\Injector\Injector;
     use SilverStripe\Control\HTTPRequest;
     use SilverStripe\Dev\BuildTask;
@@ -47,5 +44,5 @@ namespace {
             //set submission session and redirect submitter
             $request = Injector::inst()->get(HTTPRequest::class);
         }
-    }
+
 }
