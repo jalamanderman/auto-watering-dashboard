@@ -9,7 +9,9 @@ namespace {
         protected $enabled = true;
 
         public function getSchedule() {
-            return "0 22 */2 * * "; //run every 2 days at 10pm
+//            return "0 22 */2 * * "; //run every 2 days at 10pm
+            return "*/2 * * * *"; //run every 2 minutes
+
         }
 
         public function process(){
