@@ -1,0 +1,254 @@
+/**
+ * [Subtracts the border and padding from the width of the element.]
+ */
+@mixin borderBox{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+/**
+ * [scale description]
+ * @param  {[int]} $zoom [The level of zoom you want on the element. eg: '1.1'.]
+ */
+@mixin scale($zoom){
+	-webkit-transform: scale($zoom);
+	-moz-transform: scale($zoom);
+	-ms-transform: scale($zoom);
+	-o-transform: scale($zoom);
+	transform: scale($zoom);
+}
+
+
+/**
+ * [Pass the angle you want the element to rotate. eg: 90deg. NOTE: You need to add 'deg' to the angle. eg: 90deg.]
+ * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
+ */
+@mixin rotate($deg){
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	transform: rotate($deg);
+}
+
+
+
+/**
+ * [Rotate and vertically align element within a relatively positioned element. NOTE: You need to add 'deg' to the angle. eg: 90deg.]
+ * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
+ * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
+ */
+@mixin rotateVerticalAlign($topPos, $deg){
+	top: $topPos;
+	-webkit-transform: translateY(-$topPos) rotate($deg);
+	-moz-transform: translateY(-$topPos) rotate($deg);
+	-ms-transform: translateY(-$topPos) rotate($deg);
+	-o-transform: translateY(-$topPos) rotate($deg);
+	transform: translateY(-$topPos) rotate($deg);
+}
+
+
+/**
+ * [Rotate and horizontally align element within a relatively positioned element. NOTE: You need to add 'deg' to the angle. eg: 90deg.]
+ * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
+ * @param  {[int with 'deg' appended]} $deg [The angle of the rotation]
+ */
+@mixin rotateHorizontallyAlign($leftPos, $deg){
+	left: $leftPos;
+	-webkit-transform: translateY(-$leftPos) rotate($deg);
+	-moz-transform: translateY(-$leftPos) rotate($deg);
+	-ms-transform: translateY(-$leftPos) rotate($deg);
+	-o-transform: translateY(-$leftPos) rotate($deg);
+	transform: translateY(-$leftPos) rotate($deg);
+}
+
+
+/**
+ * [Vertically align element within a relatively positioned element.]
+ * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will vertically center align the element.]
+ */
+@mixin verticalAlign($topPos){
+	top: $topPos;
+	-webkit-transform: translateY(-$topPos);
+	-moz-transform: translateY(-$topPos);
+	-ms-transform: translateY(-$topPos);
+	-o-transform: translateY(-$topPos);
+	transform: translateY(-$topPos);
+}
+
+/**
+ * [Horizontally align element within a relatively positioned element.]
+ * @param  {[percentage]} $leftPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
+ */
+@mixin horizontalAlign($leftPos){
+	left: $leftPos;
+	-webkit-transform: translateX(-$leftPos);
+	-moz-transform: translateX(-$leftPos);
+	-ms-transform: translateX(-$leftPos);
+	-o-transform: translateX(-$leftPos);
+	transform: translateX(-$leftPos);
+}
+
+/**
+ * [Horizontally and vertically align element within a relatively positioned element.]
+ * @param  {[percentage]} $leftPos [Pass the horizontally position as a percetage. eg 50% will horizontally center align the element.]
+ * @param  {[percentage]} $topPos [Pass the vertical position as a percetage. eg 50% will horizontally center align the element.]
+ */
+@mixin verticalHorizontalAlign($leftPos, $topPos){
+	left: $leftPos;
+	top: $topPos;
+	-webkit-transform: translate(-$leftPos, -$topPos);
+	-moz-transform: translate(-$leftPos, -$topPos);
+	-ms-transform: translate(-$leftPos, -$topPos);
+	-o-transform: translate(-$leftPos, -$topPos);
+	transform: translate(-$leftPos, -$topPos);
+}
+
+/**
+ * [transition description]
+ * @param  {[style]} $propertie [The style you want to animate. Defaults to 'all'.]
+ * @param  {[int in seconds]} $time      [The speed at which you want the transition to take. Defaults to '0.3s'.]
+ * @param  {[movement type]} $mode      [The type of movement you want eg: linear, ease, ease-in, ease-out. Defaults to 'linear'.]
+ */
+@mixin transition($property: all, $time: 0.3s, $mode: linear){
+	-webkit-transition: $property $time $mode;
+	-moz-transition: $property $time $mode;
+	-o-transition: $property $time $mode;
+	transition: $property $time $mode;
+}
+
+//	Background image - no repeat, centered, cover
+@mixin optimiseBgImg($position: center center, $size: cover) {
+	background-repeat: no-repeat;
+	background-position: $position;
+	-webkit-background-size: $size;
+	-moz-background-size: $size;
+	-o-background-size: $size;
+	background-size: $size;
+}
+
+//	Center item horizontally and vertically
+// 	make parent item position relative
+@mixin centerPositioning() {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
+
+
+/**
+ * Grid panels
+ * Creates a grid of items that have a fixed height
+ * @param $cols int = number of items per row
+ * @param $col_gap percent = gap between items in each row (optional, defaults to 2%)
+ * @param $row_gap percent = gap between row (optional, defaults to two times col_gap (4%))
+ **/
+@mixin grid( $cols, $col_gap: 2%, $row_gap: false ){
+
+	@if $row_gap == false{
+		$row_gap: $col_gap * 2;
+	}
+
+	width: ( 0% + ( 100 / $cols ) - ( $col_gap * 2 ) + ( ( $col_gap * 2 ) / $cols ) );
+	box-sizing: border-box;
+
+	margin: 0 $col_gap;
+
+	// reset previously defined margins (at higher breakpoints)
+	&:nth-of-type(n),
+	&:nth-of-type(1n+1) {
+		margin: $row_gap $col_gap 0;
+		clear: none;
+	}
+
+	// first of row
+	&:nth-of-type(#{$cols}n+1) {
+		// margin-top: $row_gap;
+		margin-left: 0;
+		clear: both;
+	}
+
+	// handle first of row if there are less than $col
+	&:first-of-type {
+		margin-top: 0;
+		margin-left: 0;
+	}
+
+	@for $i from 1 through $cols{
+		&:nth-of-type(#{$i}){
+		 	margin-top: 0;
+		}
+	}
+
+
+	// last of row
+	&:nth-of-type(#{$cols}n) {
+		margin-right: 0;
+		position: relative;
+		&:after{
+			clear: both;
+		}
+	}
+
+	// Remove unneeded margin-bottom from the last item.
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+
+}
+
+
+
+
+/**
+ * Ease between states
+ * Use this to smooth hover/active/focus events
+ **/
+@mixin animate( $duration: 0.2s, $easing: ease-in-out ){
+	-webkit-transition: all $duration $easing;
+	   -moz-transition: all $duration $easing;
+		 -o-transition: all $duration $easing;
+		    transition: all $duration $easing;
+}
+
+
+/**
+ * Clearfix
+ **/
+@mixin clearfix(){
+	&::after {
+		content: '';
+		clear: both;
+		display: block;
+	}
+}
+
+
+/**
+ * Multi-column
+ * @param $cols int = number of columns to span
+ * @param $sum int = total number of columns
+ * @param $gap mixed = gap between items (optional, defaults to 1rem)
+ **/
+@mixin col($cols, $sum, $gap: 1rem){
+	width: percentage($cols/$sum);
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	padding: 0 $gap;
+
+	&:first-of-type {
+		padding-left: 0;
+	}
+
+	&:last-of-type {
+		padding-right: 0;
+	}
+}

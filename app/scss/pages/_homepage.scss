@@ -1,0 +1,129 @@
+$background : #121212;
+$background-light : #1E1E1E;
+$text : #E1E1E1;
+$blue: #05DAC6;
+$purple: #BC86FC;
+$dull-text: #989898;
+
+html   {
+    font-family: 'Roboto';
+    color: #E1E1E1;
+    background-color: $background;
+}
+
+h1, h2 , h3, h4 {
+    font-weight: 100;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.title {
+    margin: 0 10px;
+}
+
+.dull-text {
+    color: $dull-text;
+}
+.blue-text {
+    color: $blue;
+}
+.purple-text{
+    color: $purple;
+}
+
+.c-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media all and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.chart {
+    width: 100% !important;
+    min-height: 450px;
+}
+.row {
+    margin:0 !important;
+}
+
+.c-dashboard__item {
+    width: 100%;
+}
+
+.c-dashboard__panel {
+    background-color: $background-light;
+    padding: 5px;
+    margin: 0 10px 20px 10px;
+    border-radius: 5px;
+    transition: ease-in-out;
+    transition-duration: .3s;
+    box-shadow: 0 2px 5px #0D0D0D;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+        box-shadow: 0 5px 10px #131313;
+        transform: scale(1.02);
+    }
+
+    &-text {
+        padding: 0 5px;
+    }
+}
+
+.c-dashboard__header {
+    margin: 0 10px;
+}
+
+
+#Form_WaterOnce {
+    fieldset {
+        display: none;
+    }
+}
+
+#Form_ToggleAutoBool {
+    fieldset {
+        display: none;
+    }
+}
+
+
+#curve_chart {
+
+    svg  {
+        //width: 500px;
+
+    }
+    rect {
+        fill: $background;
+        //width: 500px;
+    }
+
+    color: $text !important;
+
+    text {
+        color: $text;
+        fill: $text;
+    }
+}
+
+input[type="submit" i] {
+    border: 0;
+    padding: 8px 15px 8px 15px;
+    background: $purple;
+    color: #fff;
+    box-shadow: 1px 1px 4px $background-light;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    cursor: pointer;
+}
+

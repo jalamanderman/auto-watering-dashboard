@@ -1,0 +1,64 @@
+
+/**
+ * Global typographic styles
+ *
+ * All typography formatting and general font settings
+ * belong in this file. For unique blocks and widgets, etc
+ * you should put those in their own component file
+ **/
+
+body,
+html {
+	font-family: $baseFont, sans-serif;
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2.2rem;
+}
+
+h3 {
+	font-size: 1.8rem;
+}
+
+h4 {
+	font-size: 1.4rem;
+}
+
+h5 {
+	font-size: 1rem;
+}
+
+p {
+	margin: 0.4rem 0;
+}
+
+ul,
+ol {
+	padding-left: 24px;
+
+    li {
+    	padding: 0.2em 0;
+    }
+}
+
+a {
+	@include animate()
+}
+
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.text-justify {
+    text-align: justify;
+}

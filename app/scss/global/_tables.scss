@@ -1,0 +1,28 @@
+
+table {
+    margin: 10px 0;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid colour(grey);
+
+        th,
+        td {
+            text-align: left;
+            padding: 4px 8px;
+            vertical-align: top;
+
+            &:not(:first-child){
+                border-left: 1px solid colour(grey);
+            }
+        }
+
+        th {
+            font-weight: 600;
+            background: colour(light_grey);
+            vertical-align: bottom;
+        }
+    }
+}

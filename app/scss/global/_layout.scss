@@ -1,0 +1,67 @@
+
+.inner {
+	max-width: 1450px;
+	margin: 0 auto;
+}
+
+.cf {
+	@include clearfix();
+}
+
+
+/* 
+In conjunction with video embed fix /app/js/components/content-video-embeds.js
+*/
+.ss-htmleditorfield-file.embed {
+	width: 0;
+	height: 0;
+
+	&.leftAlone {
+		float: left;
+	}
+	&.rightAlone {
+		float: right;
+	}
+	&.center {
+		display: block;
+		float: none;
+		margin: 0 auto;
+	}
+	&.left {
+		float: left;
+		padding-right: 0.5em;
+	}
+	&.right {
+		float: right;
+		padding-left: 0.5em;
+	}
+}
+
+/* 
+In conjunction with image alignment fix /app/js/components/content-image-alignment.js
+*/
+.captionImage, 
+.ss-htmleditorfield-file.image {
+	max-width: 100%;
+	height: auto;
+
+	&.leftAlone {
+		float: left;
+	}
+	&.rightAlone {
+		float: right;
+	}
+	&.center {
+		display: block;
+		float: none;
+		margin: 0 auto;
+	}
+	&.left {
+		float: left;
+		padding-right: 0.5em;
+	}
+	&.right {
+		float: right;
+		padding-left: 0.5em;
+	}
+}

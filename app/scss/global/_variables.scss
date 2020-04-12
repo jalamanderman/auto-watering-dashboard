@@ -1,0 +1,68 @@
+/* Fonts */
+
+$baseFont: 'Arial';
+$headingFont: 'Times New Roman';
+
+
+/* Breakpoints */
+$base: 0em;
+$xxs: 330px;
+$xs: 460px;
+$sm:  568px;
+$md: 680px;
+$xmd: 880px;
+$lg:  1024px;
+$xl: 1170px;
+$xxl: 1500px;
+
+
+/**
+ * Colours
+ **/
+
+/**
+ * Map names to colours
+ * @type {[type]}
+ */
+$colours: (
+	black: #000000,
+	white: #FFFFFF,
+	grey: #BBBBBB,
+	light_grey: #EEEEEE
+);
+
+// Loop each member of $map as key ($class) and val ($colour)
+@each $class, $colour in $colours {
+	
+	// appy color attr to -text classes
+	&.#{$class}-text {
+		color: $colour !important;
+	}
+
+	// appy background-color attr to -bg classes
+	&.#{$class}-bg {
+		background-color: $colour !important;
+
+		&.semi-trans {
+			background-color: rgba($colour, 0.95) !important;
+		}
+
+	    .darken {
+			background-color: darken($colour, 5%) !important;
+	    }		
+	}
+}
+
+/**
+ * Retrieve colour from $colours map
+ * @param  {string} $key [name of colour, as defined in $colours map]
+ * @return hex colour
+ */
+@function colour($key) {
+	@if map-has-key($colours, $key) {
+		@return map-get($colours, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $colours.";
+	@return null;
+}

@@ -1,0 +1,68 @@
+
+input,
+select,
+textarea,
+option,
+button {
+	font-family: $baseFont;
+	font-size: 1rem;
+	padding: 10px 16px;
+	box-sizing: border-box;
+	border: 1px solid colour(grey);
+	width: 100%;
+
+	&:focus,
+	&:active {
+		border-color: colour(black);
+	}
+}
+
+.field {
+	padding-bottom: 15px;
+
+	label {
+		display: block;
+		padding-bottom: 4px;
+	}
+}
+
+input[type="submit"] {
+	background: colour(grey);
+	color: colour(white);
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1rem;
+	font-weight: 700;
+	border: 0;
+	width: auto;
+	padding: 10px 30px;
+
+	&:hover{
+		background: darken(colour(grey), 10%);
+	}
+}
+
+/**
+ * Removes iOS default styling
+ * 
+ * Targets all necessary inputs and removes the blue underline for phone numbers
+ **/
+button,
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+-webkit-appearance: none;
+border-radius: 0;
+}
+a[href^="tel"] {
+	color: inherit;
+	text-decoration: none;
+}
+
+::-webkit-input-placeholder {	color: rgba(0,0,0,0.25); }
+:-moz-placeholder {				color: rgba(0,0,0,0.25); }
+::-moz-placeholder {			color: rgba(0,0,0,0.25); }
+:-ms-input-placeholder {		color: rgba(0,0,0,0.25); }

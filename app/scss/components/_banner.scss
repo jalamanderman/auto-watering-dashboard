@@ -1,0 +1,21 @@
+.page-banner {
+    width: 100%;
+    @include optimiseBgImg($position: 50% 25%);
+
+    h1 {
+        color: colour(white);
+    }
+
+    p {
+        color: colour(white);
+    }
+
+    &--no-image {
+        background: colour(grey);
+    }
+
+    &__inner {
+        padding: 30px 5%;
+        min-height: 150px;
+    }
+}

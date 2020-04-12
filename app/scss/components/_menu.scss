@@ -1,0 +1,30 @@
+
+$menu: 'menu';
+
+.#{$menu}{
+	&__item {
+		display: block;
+		position: relative;
+
+        &--current {
+            & > .#{$menu}__item__link {
+                font-weight: 600;
+            }
+		}
+
+        &--expanded {
+            & > .#{$menu}__submenu {
+                display: block;
+            }
+        }
+
+		&__link {
+			text-decoration: none;
+		}
+	}
+
+    &__submenu {
+        margin-left: 15px;
+        display: none;
+    }
+}
