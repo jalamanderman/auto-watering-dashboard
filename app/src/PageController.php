@@ -87,11 +87,16 @@ class PageController extends ContentController {
     public function ToggleAutoBool() {
         $dashboard = Dashboard::get()->first();
 
+        $value = false;
+
+        if ($dashboard->AutoWatering == 'ON') {
+            $value = true;
+        }
+
         $fields = FieldList::create(
-//            TextField::create('Test', 'test'),
-            CheckboxField::create('AutoWatering', '')->setValue(false)
+            CheckboxField::create('AutoWatering', '')->setValue($value)
         );
-        $actions = FieldList::create(FormAction::create('doToggleAutoBool', 'Toggle'));
+        $actions = FieldList::create(FormAction::create('doToggleAutoBool', 'Save'));
         return Form::create($this, 'ToggleAutoBool', $fields, $actions);
     }
 

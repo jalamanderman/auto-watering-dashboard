@@ -99,14 +99,31 @@
 __webpack_require__(/*! ../scss/index.scss */ "./app/scss/index.scss");
 
 
-$(document).ready( function(){
-    if ($('#curve_chart').length > 0){
-        google.charts.load('current', {'packages':['corechart']});
+$(document).ready(function () {
+    if ($('#curve_chart').length > 0) {
+        google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
     }
+
+    if ($('input#Form_ToggleAutoBool_AutoWatering').is(':checked')) {
+
+        $('.right').addClass('toggle-checkbox');
+    } else {
+        $('.right').removeClass('toggle-checkbox');
+    }
+
+    $("input#Form_ToggleAutoBool_AutoWatering").click(function () {
+        if ($('input#Form_ToggleAutoBool_AutoWatering').is(':checked')) {
+
+            $('.right').addClass('toggle-checkbox');
+        } else {
+            $('.right').removeClass('toggle-checkbox');
+        }
+    });
+
 });
 
-$(window).resize(function(){
+$(window).resize(function () {
     drawChart();
 });
 console.log('yo');
@@ -122,7 +139,7 @@ function drawChart() {
         return {x: a.x + b.x}; // returns object with property x
     })
 
-    dataImport.reduce(function(prev, curr, index) {
+    dataImport.reduce(function (prev, curr, index) {
         return prev + curr;
     });
 
@@ -133,14 +150,15 @@ function drawChart() {
     var options = {
         title: 'Water History (7 days)',
         // curveType: 'function',
-        vAxis: {viewWindow: {min:0} },
-        legend: { position: 'bottom' },
+        vAxis: {viewWindow: {min: 0}},
+        legend: {position: 'bottom'},
         height: 350,
         backgroundColor: 'white',
         series: {
-            0: { color: '#05DAC6' }},
-        hAxis : {
-            textStyle : {
+            0: {color: '#05DAC6'}
+        },
+        hAxis: {
+            textStyle: {
                 fontSize: 12 // or the number you want
             }
 
