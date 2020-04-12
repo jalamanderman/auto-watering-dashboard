@@ -14,5 +14,6 @@
 
 
 	$Layout
+	$Form
 
 <%--<% include Footer %>--%>
