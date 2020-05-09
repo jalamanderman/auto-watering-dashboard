@@ -21,8 +21,12 @@
                 $params = $request->requestVars();
             }
 
-            // Run it twice
-            $this->doAutoWater();
+            $dashboard = Dashboard::get()->first();
+
+            if ($dashboard->AutoWatering == 'ON') {
+                // Run it twice
+                $this->doAutoWater();
+            }
 
             echo '<br/>' . ' <br/>' . 'Cron task completed successfully.';
 
