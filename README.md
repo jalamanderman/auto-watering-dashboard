@@ -1,9 +1,6 @@
-# Skeletor
+# Auto watering
 
-Base install for all PlasticStudio projects.
+A dashboard for my raspberry pi powered automatic plant watering system. 
 
-## Required
-
-- branch off /develop
-- use feature/ or release/ branch names
-- merge back into /develop once change is ready to put in master
+Runs on a web server. 
+Utilises Silverstripe framework.
