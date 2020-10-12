@@ -25,54 +25,55 @@ class PageController extends ContentController {
     ];
 
     public function LastWatered() {
-        $last_watered = FormSubmission::get()->First()->Created;
 
-        function time_elapsed_string($datetime, $full = false) {
-            $now = new DateTime;
-            $ago = new DateTime($datetime);
-            $diff = $now->diff($ago);
-
-            $diff->w = floor($diff->d / 7);
-            $diff->d -= $diff->w * 7;
-
-            $string = array(
-                'y' => 'year',
-                'm' => 'month',
-                'w' => 'week',
-                'd' => 'day',
-                'h' => 'hour',
-                'i' => 'minute',
-                's' => 'second',
-            );
-            foreach ($string as $k => &$v) {
-                if ($diff->$k) {
-                    $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-                } else {
-                    unset($string[$k]);
-                }
-            }
-
-            if (!$full) {
-                $string = array_slice($string, 0, 1);
-            }
-            return $string ? implode(', ', $string) . ' ago' : 'just now';
+        if (isset(FormSubmission::get()->First()->Created)) {
+            $last_watered = FormSubmission::get()->First()->Created;
+            return$this->time_elapsed_string($last_watered);
         }
 
-        return  time_elapsed_string($last_watered);
+    }
+
+    function time_elapsed_string($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) {
+            $string = array_slice($string, 0, 1);
+        }
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 
 
-
-    public function doToggleAutoBool($data){
-
+    public function doToggleAutoBool($data) {
         $dashboard = Dashboard::get()->First();
 //        $dashboard->AutoWaterting = 1;
 
         echo $dashboard->AutoWaterting;
         if (isset($data['AutoWatering'])) {
-            $dashboard->AutoWatering  = 'ON';
+            $dashboard->AutoWatering = 'ON';
         } else {
-            $dashboard->AutoWatering  = 'OFF';
+            $dashboard->AutoWatering = 'OFF';
         }
 
         echo $dashboard->AutoWaterting;
@@ -112,6 +113,7 @@ class PageController extends ContentController {
         $submission->OriginID = $this->ID;
         $submission->OriginClass = $this->ClassName;
 
+        // TODO This should be refactored to a AJAX request
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind");
         sleep(3);
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind");
@@ -202,21 +204,21 @@ class PageController extends ContentController {
         return false;
     }
 
-	public function init() {
-		parent::init();
+    public function init() {
+        parent::init();
 
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind");
 
         Requirements::css('https://fonts.googleapis.com/css?family=Roboto:400,600,700,800');
-		
-		if (Director::isLive()){
+
+        if (Director::isLive()) {
 //			Requirements::javascript('app/production/index.min.js');
 //			Requirements::css('app/production/index.min.css');
             Requirements::css('app/production/index.css');
             Requirements::javascript('app/production/index.js');
-		} else {
-			Requirements::css('app/production/index.css');
-			Requirements::javascript('app/production/index.js');
-		}
-	}
+        } else {
+            Requirements::css('app/production/index.css');
+            Requirements::javascript('app/production/index.js');
+        }
+    }
 }

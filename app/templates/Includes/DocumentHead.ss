@@ -8,7 +8,6 @@
 	<title><% if MetaTitle %>$MetaTitle<% else %>$MenuTitle.XML | $SiteConfig.Title<% end_if %></title>
 
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-<%--	<link rel="icon" href="app/images/drop.ico" type="image/gif" sizes="16x16">--%>
 	<% if MetaDescription %><meta name="description" content="$MetaDescription" /><% end_if %>
 	<% if MetaKeywords %><meta name="keywords" content="$MetaKeywords" /><% end_if %>
 	<% if ExtraMeta %>$ExtraMeta<% end_if %>
@@ -29,7 +28,6 @@
 		<meta property="og:image" content="{$absoluteBaseHref}app/images/sample-logo.png" />
 	<% end_if %>
 
-	<% include GoogleAnalytics %>
 	<link rel="icon" href="app/images/favicon.ico" type="image/gif" sizes="16x16">
 	<link rel="apple-touch-icon" sizes="128x128" href="app/images/favicon.ico">
 	<link rel="icon" sizes="192x192" href="app/images/favicon.ico">
