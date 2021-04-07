@@ -1,5 +1,0 @@
-<% include DocumentHead %>
-
-	$Layout
-	$Form
-

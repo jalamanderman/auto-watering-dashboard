@@ -1,25 +1,26 @@
 {
-    "name": "auto-watering-robot",
-    "description": "Dashboard to setup and automatically water a house plant",
+    "name": "plasticstudio/skeletor",
+    "description": "The PlasticStudio base SilverStripe project installer",
     "require": {
         "silverstripe/recipe-plugin": "^1.3",
-        "silverstripe/recipe-cms": "4.4@stable",
+        "silverstripe/recipe-cms": "^4.7",
         "silverstripe/crontask": "^2.1",
         "silverstripe/dynamodb": "^4.0",
         "symbiote/silverstripe-gridfieldextensions": "^3.2",
         "undefinedoffset/sortablegridfield": "^2.0",
-        "gdmedia/ss-auto-git-ignore": "^1",
-        "dnadesign/silverstripe-elemental": "^4"
+        "jaedb/iconfield": "^1",
+        "plasticstudio/sitemap": "^2.2"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
-    "scripts": {
-        "post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go"
-    },
+    "type": "silverstripe-project",
     "extra": {
+        "resources-dir": "_resources",
         "project-files-installed": [
             "app/.htaccess",
             "app/_config.php",
+            "app/_config/database.yml",
+            "app/_config/mimevalidator.yml",
             "app/_config/mysite.yml",
             "app/src/Page.php",
             "app/src/PageController.php"
@@ -27,9 +28,11 @@
         "public-files-installed": [
             ".htaccess",
             "index.php",
-            "install-frameworkmissing.html",
-            "install.php",
             "web.config"
+        ],
+        "expose": [
+            "app/client/dist",
+            "app/client/assets"
         ]
     }
 }
