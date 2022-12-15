@@ -204,7 +204,7 @@ class PageController extends ContentController {
         return false;
     }
 
-    public function init() {
+    protected function init() {
         parent::init();
 
         exec("echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind");

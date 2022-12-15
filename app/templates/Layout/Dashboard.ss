@@ -18,7 +18,7 @@
 <%--                OFF--%>
 <%--            <% end_if %>--%>
             </h4>
-            <h4><span class="dull-text">Auto watering interval:</span> 48 HOURS, at 10pm</h4>
+            <h4><span class="dull-text">Auto watering interval:</span> 24 HOURS, at 10pm</h4>
         </div>
 
         <div class="c-dashboard__panel">
